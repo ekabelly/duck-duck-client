@@ -1,0 +1,1 @@
+export const searchApiBaseUrl = 'http://localhost:4000/api/v1/duck/';
