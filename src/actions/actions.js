@@ -1,5 +1,5 @@
 import searchService from '../services/search.service';
-import {SEARCH} from '../constants/actions-types.json';
+import {SEARCH, SEARCH_PHRASE} from '../constants/actions-types.json';
 
 const searchAction = payload => ({
     type: SEARCH,
@@ -13,3 +13,8 @@ export const makeSearch = searchPhrase => async dispatch => {
         query: searchPhrase
     }));
 }
+
+export const setSearchPhrase = searchPhrase => ({
+    type: SEARCH_PHRASE,
+    payload: searchPhrase
+})

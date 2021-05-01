@@ -1,22 +1,23 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { makeSearch } from '../actions/actions';
+import { useDispatch, connect } from 'react-redux';
+import { makeSearch, setSearchPhrase } from '../actions/actions';
 
-const SearchBar = () => {
+const SearchBar = props => {
     const dispatch = useDispatch();
-    const [searchPhrase, setSearchPhrase] = useState();
 
-    return (<div className="searchbar flex">
+    return (<div className="search-bar flex">
         <input
+            value={props.searchPhrase}
             type="text"
-            onInput={(e) => setSearchPhrase(e.target.value)}
+            onInput={(e) => dispatch(setSearchPhrase(e.target.value))}
             placeholder="Search"
         >
         </input>
-        <button onClick={() => dispatch(makeSearch(searchPhrase))}>
+        <button onClick={() => dispatch(makeSearch(props.searchPhrase))}>
             Search
     </button>
     </div>);
 }
 
-export default SearchBar;
+const mapStateToProps = state => ({ searchPhrase: state.searchPhrase })
+
+export default connect(mapStateToProps)(SearchBar);

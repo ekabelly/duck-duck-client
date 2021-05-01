@@ -3,10 +3,10 @@ import SearchResults from '../components/SearchResults';
 import SideBar from '../components/SideBar';
 
 const DuckDuckSearch = props =>
-<div className="duck-duck-search flex">
-    <SideBar />
-    <div>
-        <SearchBar />
+<div>    
+    <SearchBar />
+    <div style={{display: 'grid', gridTemplateColumns: '2fr 5fr'}}>
+        <SideBar />
         <SearchResults />
     </div>
 </div>

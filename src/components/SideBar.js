@@ -1,12 +1,19 @@
 import { connect, useDispatch } from 'react-redux';
-import { makeSearch } from '../actions/actions';
+
+import { makeSearch, setSearchPhrase } from '../actions/actions';
 
 const SideBar = props => {
     const dispatch = useDispatch();
+
+    const dispatchSearch = query => {
+        dispatch(setSearchPhrase(query));
+        dispatch(makeSearch(query));
+    }
+
     const searchResultDiv = query =>
-        <li 
-        style={{cursor: 'pointer', margin: '10px'}}
-        onClick={() => dispatch(makeSearch(query))} 
+        <li
+        className="past-query"
+        onClick={() => dispatchSearch(query)} 
         key={query}
         >
             {query}
@@ -20,7 +27,7 @@ const SideBar = props => {
         return <ul>{res}</ul>;
     }
 
-    return <div>
+    return <div className="side-bar">
         <h4> Previous Searches </h4>
         {renderSearchResults()}
     </div>

@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import DuckDuckSearch from './layout/DuckDuckSearch';
 
 function App() {
